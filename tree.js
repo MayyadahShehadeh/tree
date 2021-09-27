@@ -233,6 +233,7 @@ function printZigZagTraversal(rootNode)
     }
     return result;
 }
+}
 let one = new Node(1);
 let two = new Node(2);
 let three = new Node(3);
