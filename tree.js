@@ -57,6 +57,7 @@ class BinarySearchTree {
     }
     add(value) {
         let node = new Node(value);
+       
         let addValue = (current, node) => {
             if (node.value < current.value) {
                 if (!current.left) {
@@ -72,7 +73,6 @@ class BinarySearchTree {
                 }
             }
         };
-
         if (!this.root) {
             this.root = node;
         } else {
@@ -201,7 +201,38 @@ function SumofNumbersBT(root) {
     }
     else return 'Sorry there is no root';
 }
-    
+function printZigZagTraversal(rootNode)
+{
+   let result =[];
+    if (!rootNode ){return;}
+
+    let currentLevel = [];
+    let nextLevel = [];
+    currentLevel.push(rootNode);
+    let leftToRight = true;
+    while (currentLevel.length > 0)
+    {
+        let node = currentLevel.pop();
+        result.push(node.value)
+        if (leftToRight)
+        {
+            if (node.left){nextLevel.push(node.left); }
+            if (node.right){ nextLevel.push(node.right);}
+        }
+        else
+        {
+            if (node.right ){nextLevel.push(node.right);
+            if (node.left){nextLevel.push(node.left);}
+        }
+
+        if (currentLevel.length == 0) {
+            leftToRight = !leftToRight;
+            currentLevel = nextLevel;
+            nextLevel = 0;
+        }
+    }
+    return result;
+}
 let one = new Node(1);
 let two = new Node(2);
 let three = new Node(3);
@@ -237,11 +268,12 @@ BST.add(11);
 // BST.add(2);
 // BST.add(5);
 // BST.add(9);
-console.log('max',findMaxNumber(one));
-console.log('min',findMinNumber(one));
-console.log('BreadthFirst',BreadthFirst(one));
-console.log('fizzBuzzTree',fizzBuzzTree(one));
-console.log('SumofNumbersBT',SumofNumbersBT(one));
+// console.log('max',findMaxNumber(one));
+// console.log('min',findMinNumber(one));
+// console.log('BreadthFirst',BreadthFirst(one));
+// console.log('fizzBuzzTree',fizzBuzzTree(one));
+// console.log('SumofNumbersBT',SumofNumbersBT(one));
+console.log('printZigZagTraversal',printZigZagTraversal(one));
 // console.log(BST);
 // console.log(contains(BST.root, 6));
 
@@ -273,4 +305,46 @@ console.log('SumofNumbersBT',SumofNumbersBT(one));
 
 //     }
 //     return max;
+// }
+
+// function BreadthFirst  (root) {
+//     const result = [];
+//     const q = [root];
+//     let switching = false;
+//     let cur ;
+//     if(root){
+//         while (q.length > 0) {
+//        console.log('----',q.length);
+//           if(switching)  {
+//             cur = q.shift()
+//             result.push(cur.value)
+//             switching = false;
+//             if (cur.left){
+//                 q.push(cur.left)
+                
+//             }
+//             if (cur.right){
+//                 q.push(cur.right)
+                
+//             }
+//           }
+//         else { 
+//             cur = q.shift()
+//             result.push(cur.value)
+//             switching = true;
+//             if (cur.right){
+//                 q.push(cur.left)
+                
+//             }
+//             if (cur.left){
+//                 q.push(cur.right)
+                
+//             }
+//         }
+    
+//         };
+//         return result
+
+//     }
+//     else return 'Sorry there is no root';
 // }
