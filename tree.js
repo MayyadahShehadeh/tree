@@ -203,12 +203,11 @@ function SumofNumbersBT(root) {
 }
 function printZigZagTraversal(rootNode)
 {
-   let result =[];
-    if (!rootNode ){return;}
+ let result =[];
+    if (!rootNode){return;}
 
-    let currentLevel = [];
+    let currentLevel = [rootNode];
     let nextLevel = [];
-    currentLevel.push(rootNode);
     let leftToRight = true;
     while (currentLevel.length > 0)
     {
@@ -217,22 +216,21 @@ function printZigZagTraversal(rootNode)
         if (leftToRight)
         {
             if (node.left){nextLevel.push(node.left); }
-            if (node.right){ nextLevel.push(node.right);}
+            if (node.right ){ nextLevel.push(node.right);}
         }
         else
         {
-            if (node.right ){nextLevel.push(node.right);
+            if (node.right ){nextLevel.push(node.right);}
             if (node.left){nextLevel.push(node.left);}
         }
 
         if (currentLevel.length == 0) {
             leftToRight = !leftToRight;
             currentLevel = nextLevel;
-            nextLevel = 0;
+            nextLevel = [];
         }
     }
     return result;
-}
 }
 let one = new Node(1);
 let two = new Node(2);
