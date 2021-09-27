@@ -201,6 +201,13 @@ function SumofNumbersBT(root) {
     }
     else return 'Sorry there is no root';
 }
+function addBT(root)
+{
+    if (root == null)
+        return 0;
+    return (root.value + addBT(root.left) + addBT(root.right));
+}
+
 function printZigZagTraversal(rootNode)
 {
  let result =[];
@@ -270,9 +277,10 @@ BST.add(11);
 // console.log('max',findMaxNumber(one));
 // console.log('min',findMinNumber(one));
 // console.log('BreadthFirst',BreadthFirst(one));
-// console.log('fizzBuzzTree',fizzBuzzTree(one));
+console.log('fizzBuzzTree',fizzBuzzTree(one));
 // console.log('SumofNumbersBT',SumofNumbersBT(one));
 console.log('printZigZagTraversal',printZigZagTraversal(one));
+console.log('addBT------' , addBT(one));
 // console.log(BST);
 // console.log(contains(BST.root, 6));
 
