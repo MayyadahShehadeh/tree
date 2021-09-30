@@ -6,6 +6,7 @@ class Node {
         this.right = null;
     }
 }
+/////// ✅ ✅  ✅ ✅4
 class BinaryTree {
     constructor(root) {
         this.root = root;
@@ -27,6 +28,7 @@ function preOrder(root) {
     //  recursive function to repeated call same function 
     return result;
 }
+/////// ✅ ✅  ✅ ✅4
 // left - root - right
 function inOrder(root) {
     let result = [];
@@ -38,7 +40,7 @@ function inOrder(root) {
     traverse(root);
     return result;
 }
-
+/////// ✅ ✅  ✅ ✅4
 // left  - right - root
 function postOrder(root) {
     let result = [];
@@ -50,6 +52,7 @@ function postOrder(root) {
     traverse(root);
     return result;
 }
+/////// ✅ ✅  ✅ ✅4
 class BinarySearchTree {
 
     constructor() {
@@ -82,10 +85,9 @@ class BinarySearchTree {
     }
 
 }
-
+/////// ✅ ✅  ✅ ✅4
 function contains(root, value) {
     if (!root) {
-        console.log('in roooot');
         return false;
     }
     let searchValue = (current, value) => {
@@ -106,6 +108,39 @@ function contains(root, value) {
 
     return searchValue(root, value);
 }
+function ifContains(root,value){
+    if(!root)
+    return;
+    if(root.value == value) return true;
+    
+    if(root.value>value){
+        if(!root.left) return false;
+        else return ifContains(root.left,value)
+    }
+    else if(root.value<value){
+        if(!root.right) return false;
+        else return ifContains(root.right,value)
+    }
+    return false;
+}
+/////// ✅ ✅  ✅ ✅4 BST
+
+function ifContainsBT(root,value){ // NOOOOOOOOR EDROSY HAYYYYY
+    let check=false;
+    let checkFUn=(root,value)=>{
+        if(!root)
+        return false;
+        if(root.value == value) check= true;
+        
+            if(root.left)  check=checkFUn(root.left,value)
+            if(root.right) check=checkFUn(root.right,value)
+            return check;
+    }
+  
+    checkFUn(root,value)
+         return check;
+}
+
 function findMaxNumber(root) {
     if (!root)
     return false;
@@ -134,6 +169,21 @@ function findMinNumber(root) {
 
   
 }
+///////////////////////
+let isSymmetric = function(root) {
+    if (root == null) return true;
+    return isMirror(root.left, root.right);
+};
+
+const isMirror = function(leftSub, rightSub) {
+    if (leftSub == null && rightSub == null) return true;
+    if (leftSub == null || rightSub == null) return false;
+
+    return (leftSub.val === rightSub.val 
+            && isMirror(leftSub.left, rightSub.right) 
+            && isMirror(leftSub.right, rightSub.left))
+}
+
 function BreadthFirst  (root) {
     const result = [];
     const q = [root];
@@ -201,13 +251,7 @@ function SumofNumbersBT(root) {
     }
     else return 'Sorry there is no root';
 }
-function addBT(root)
-{
-    if (root == null)
-        return 0;
-    return (root.value + addBT(root.left) + addBT(root.right));
-}
-
+ks
 function printZigZagTraversal(rootNode)
 {
  let result =[];
@@ -239,6 +283,7 @@ function printZigZagTraversal(rootNode)
     }
     return result;
 }
+
 let one = new Node(1);
 let two = new Node(2);
 let three = new Node(3);
@@ -277,10 +322,14 @@ BST.add(11);
 // console.log('max',findMaxNumber(one));
 // console.log('min',findMinNumber(one));
 // console.log('BreadthFirst',BreadthFirst(one));
-console.log('fizzBuzzTree',fizzBuzzTree(one));
+// console.log('fizzBuzzTree',fizzBuzzTree(one));
+console.log('ifContains',ifContains(BST.root ,9));
+console.log('ifContains',ifContains(one,9));
+console.log('ifContainsBT',ifContainsBT(one,11));
+console.log('ifContainsBST',ifContainsBT(BST.root,11));
 // console.log('SumofNumbersBT',SumofNumbersBT(one));
-console.log('printZigZagTraversal',printZigZagTraversal(one));
-console.log('addBT------' , addBT(one));
+// console.log('printZigZagTraversal',printZigZagTraversal(one));
+// console.log('addBT------' , addBT(one));
 // console.log(BST);
 // console.log(contains(BST.root, 6));
 
