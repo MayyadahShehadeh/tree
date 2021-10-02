@@ -190,29 +190,33 @@ function BreadthFirst  (root) {
     
         };
         return result
-
     }
     else return 'Sorry there is no root';
 }
 //////////////////////////////////////////////////   
-function SumofNumbersBT(root) { // for all nodes tree
-    let result=0 ;
-    const q = [root];
-    if(root){
-        while (q.length > 0) {
-            let cur = q.shift();
-            result=result+cur.value;
-            if (cur.left)
-                q.push(cur.left)
-            if (cur.right)
-                q.push(cur.right)
-    
-        };
-        return result
-
-    }
-    else return 'Sorry there is no root';
+function SumofNumbersBT(root)
+{
+    if (!root)return 0;
+    return (root.value + SumofNumbersBT(root.left) +SumofNumbersBT(root.right));
 }
+// function SumofNumbersBT(root) { // for all nodes tree
+//     let result=0 ;
+//     const q = [root];
+//     if(root){
+//         while (q.length > 0) {
+//             let cur = q.shift();
+//             result=result+cur.value;
+//             if (cur.left)
+//                 q.push(cur.left)
+//             if (cur.right)
+//                 q.push(cur.right)
+    
+//         };
+//         return result
+
+//     }
+//     else return 'Sorry there is no root';
+// }
 ///////////////////////////////////////////////////
 function printZigZagTraversal(rootNode)
 {
