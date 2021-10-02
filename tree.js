@@ -221,7 +221,7 @@ function SumofNumbersBT(root)
 function printZigZagTraversal(rootNode)
 {
  let result =[];
-    if (!rootNode){return;}
+    if (!rootNode)return;
 
     let currentLevel = [rootNode];
     let nextLevel = [];
@@ -232,13 +232,13 @@ function printZigZagTraversal(rootNode)
         result.push(node.value)
         if (leftToRight)
         {
-            if (node.left){nextLevel.push(node.left); }
-            if (node.right ){ nextLevel.push(node.right);}
+            if (node.left) nextLevel.push(node.left); 
+            if (node.right ) nextLevel.push(node.right);
         }
         else
         {
-            if (node.right ){nextLevel.push(node.right);}
-            if (node.left){nextLevel.push(node.left);}
+            if (node.right ) nextLevel.push(node.right);
+            if (node.left) nextLevel.push(node.left);
         }
 
         if (currentLevel.length == 0) {
@@ -256,7 +256,7 @@ function sum(node)
     {
         return false;
     }
-    return (sum(node.left) + node.value+sum(node.right));
+    return (sum(node.left) +node.value+sum(node.right));
 }
  
 function isSumTree(node)//// for each root should be the sum for all child
@@ -295,7 +295,6 @@ function leftLeavesSum(node)
             res += leftLeavesSum(node.left);
         res += leftLeavesSum(node.right);
     }
-
     return res;
 }
 /////////////////////////////////////////
@@ -336,15 +335,15 @@ function areIdentical(root1, root2)
             && areIdentical(root1.right, root2.right));
 }
 
-function isSubtree(T,  S)
+function isSubtree(tree1,  tree2)
 {
-    if (S == null) return true;
+    if (!tree2) return true;
 
-    if (T == null)  return false;
+    if (!tree1)  return false;
 
-    if (areIdentical(T, S))  return true;
+    if (areIdentical(tree1, tree2))  return true;
 
-    return isSubtree(T.left, S) || isSubtree(T.right, S);
+    return isSubtree(tree1.left, tree2) || isSubtree(tree1.right, tree2);
 }
 ////////////////////////////////////////////////////
 function  convertmirror(node)
